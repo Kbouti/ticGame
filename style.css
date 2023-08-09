@@ -1,12 +1,17 @@
 #header{
-    height:20vh;
+    height:10vh;
     display:flex;
     justify-content:center;
+    
 }
 
 #title{
     font-size:60px;
-    
+    align-self:center
+}
+
+#content{
+    height:90vh;
 }
 
 #gameboard{
@@ -14,8 +19,8 @@
     grid-template-rows:repeat(3, 1fr);
     grid-template-columns:repeat(3, 1fr);
     grid-gap:4px;
-    height:500px;
-    width:500px;
+    height:50vh;
+    width:50vh;
     background-color:blue
 
 }
@@ -29,5 +34,5 @@
 .tile{
     background-color: white;
     cursor:pointer;
-    
+
 }
