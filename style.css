@@ -13,9 +13,10 @@
     display:grid;
     grid-template-rows:repeat(3, 1fr);
     grid-template-columns:repeat(3, 1fr);
-
+    grid-gap:4px;
     height:500px;
     width:500px;
+    background-color:blue
 
 }
 
@@ -26,5 +27,7 @@
 
 }
 .tile{
-    background-color: aquamarine;
+    background-color: white;
+    cursor:pointer;
+    
 }
