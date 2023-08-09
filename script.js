@@ -3,4 +3,3 @@ const gameboardDiv = document.getElementById(`gameboard`);
 
 })()
 
-
