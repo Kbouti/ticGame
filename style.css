@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
 #header{
     height:10vh;
     display:flex;
@@ -43,5 +48,10 @@
 .tile{
     background-color: white;
     cursor:pointer;
+
+}
+
+form{
+    border:solid black;
 
 }
