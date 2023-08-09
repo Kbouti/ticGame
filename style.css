@@ -1,0 +1,30 @@
+#header{
+    height:20vh;
+    display:flex;
+    justify-content:center;
+}
+
+#title{
+    font-size:60px;
+    
+}
+
+#gameboard{
+    display:grid;
+    grid-template-rows:repeat(3, 1fr);
+    grid-template-columns:repeat(3, 1fr);
+
+    height:500px;
+    width:500px;
+
+}
+
+
+#content{
+    display:grid;
+    place-content:center;
+
+}
+.tile{
+    background-color: aquamarine;
+}
