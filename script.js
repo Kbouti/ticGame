@@ -47,6 +47,9 @@ function toggleOptions(){
 function getNames(){
 player1Name = player1Input.value;
 player2Name = player2Input.value;
+if(player2Name === ``){
+    player2Name = `Unnamed competitor`;
+}
 player1Input.value = '';
 player2Input.value = '';
 }
