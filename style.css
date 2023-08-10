@@ -59,8 +59,8 @@ body{
     border-radius:5px;
     height:40vh;
     width:50vw;
-    min-width:300px;
-    min-height:250px;
+    min-width:500px;
+    min-height:350px;
     background-color: white;
     position:absolute;
     top:65px;
@@ -70,4 +70,29 @@ body{
 form{
     display:flex;
     flex-direction:column;
+    font-size: 24px;
+    justify-content:center;
+    margin-top:20px;;
+}
+
+.inputField{
+    display:flex;
+    justify-content: center;
+}
+
+
+.radioContainer{
+    width:350px;
+    display:flex;
+    justify-content:space-between;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+form > div {
+    margin:10px;
+}
+
+.formBtn{
+    font-size: 24px;;
 }
