@@ -1,0 +1,22 @@
+body{
+    width:100vw;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+}
+
+#gameBoard{
+    display:grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    height:25vw;
+    width:25vw;
+    grid-gap:2px;
+    background-color: #1F5573;
+    cursor:pointer;
+}
+
+
+.tile{
+    background-color: white;
+}
