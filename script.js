@@ -1,4 +1,6 @@
-const form = document.getElementById(`optionsForm`);
+const restartButton = document.getElementById(`restart`);
+const optionsButton = document.getElementById(`options`);
+const optionsForm = document.getElementById(`optionsForm`);
 const player1Input = document.getElementById(`player1`);
 const player2Input = document.getElementById(`player`);
 const radio1v1 = document.getElementById('1v1');
