@@ -46,4 +46,9 @@ body{
     display:flex;
     align-items:center;
     text-align:center;
+    
+}
+
+.tile:hover{
+    background-color: rgb(221, 221, 221);
 }
