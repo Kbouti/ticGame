@@ -61,8 +61,19 @@ function setNames(){
 
 function getGameMode(){
     if (radio1v1.checked){
-        console.log(`game on`);
+        console.log(`human mode`);
+        gameMode = 'human'
+    } else if (radioaiEasy.checked){
+        console.log(`comoputer easy`);
+        player2Name = 'TicTacToe Bot';
+        gameMode = 'aiEasy'
     }
+    else if (radioaiHard.checked){
+        console.log(`computer hard`);
+        player2Name = 'THE DESTROYER';
+        gameMode = 'aiHard'
+    }
+    return gameMode;
 }
 
 function startGame(){
@@ -81,9 +92,9 @@ cancelButton.addEventListener('click', function(){
 optionsForm.addEventListener(`submit`, function(){
     event.preventDefault();
     getNames();
-    setNames();
     getGameMode();
+    setNames();
     toggleOptions();
-
+    startGame();
 })
 
