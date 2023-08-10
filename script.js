@@ -20,12 +20,37 @@ const tile6 = document.getElementById('6');
 const tile7 = document.getElementById('7');
 const tile8 = document.getElementById('8');
 
+
+
+let player1;
+let player2;
+
+let player1Name;
+let player2Name;
+
+
+
 function toggleOptions(){
     if (optionsBoxDiv.style.display ==="none"){
         optionsBoxDiv.style.display = "block";
     } else {
         optionsBoxDiv.style.display = "none";
     }
+}
+
+function getNames(){
+player1Name = player1Input.value;
+player2Name = player2Input.value;
+player1Input.value = '';
+player2Input.value = '';
+}
+
+function getGameMode(){
+
+}
+
+function startGame(){
+    
 }
 
 optionsButton.addEventListener('click', function(){
@@ -37,5 +62,7 @@ cancelButton.addEventListener('click', function(){
 });
 
 submitButton.addEventListener('click', function(){
+    event.preventDefault();
+    getNames();
     toggleOptions();
 });
