@@ -5,6 +5,15 @@ body{
     justify-content:center;
 }
 
+
+
+/* below codeblock may not be needed? */
+#gameContainer{
+    display:flex;
+    justify-content:center;
+    width:100%;
+}
+
 #gameBoard{
     display:grid;
     grid-template-rows: repeat(3, 1fr);
@@ -19,4 +28,12 @@ body{
 
 .tile{
     background-color: white;
+    width:auto;
+    height:auto;
+    min-width:50px;
+    min-height:50px;
+    font-size: max(4vw, 3rem);
+    display:flex;
+    align-items:center;
+    text-align:center;
 }
