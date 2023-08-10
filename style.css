@@ -52,3 +52,17 @@ body{
 .tile:hover{
     background-color: rgb(221, 221, 221);
 }
+
+#optionsBox{
+    border: solid black 2px;
+    border-radius:5px;
+    height:30vh;
+    width:30vw;
+    min-width:300px;
+    min-height:250px;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+}
