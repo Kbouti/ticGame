@@ -3,6 +3,7 @@ body{
     min-height:100vh;
     display:flex;
     justify-content:center;
+    text-align: center;
 }
 
 
@@ -20,6 +21,9 @@ body{
     grid-template-columns: repeat(3, 1fr);
     height:25vw;
     width:25vw;
+    min-width:170px;
+    min-height:170px;
+
     grid-gap:2px;
     background-color: #1F5573;
     cursor:pointer;
