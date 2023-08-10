@@ -7,24 +7,41 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="title">Tic Tac Toe</h1>
-    <h4 id="actionMessage">Start game i guess</h4>
-    <div id="buttons">
-        <button id="restart">Restart</button>
-        <button id="options">Options</button>
-    </div>
+    <div class="content">
+        <h1 id="title">Tic Tac Toe</h1>
+        <h4 id="actionMessage">Start game i guess</h4>
+        <div id="buttons">
+            <button id="restart">Restart</button>
+            <button id="options">Options</button>
+        </div>
 
-    <div id="gameContainer">
-        <div class="tile" id="0"></div>
-        <div class="tile" id="1"></div>
-        <div class="tile" id="2"></div>
-        <div class="tile" id="3"></div>
-        <div class="tile" id="4"></div>
-        <div class="tile" id="5"></div>
-        <div class="tile" id="6"></div>
-        <div class="tile" id="7"></div>
-        <div class="tile" id="8"></div>
+        <div id="gameContainer">
+            <div id="gameBoard">
+                <div class="tile" id="0"></div>
+                <div class="tile" id="1"></div>
+                <div class="tile" id="2"></div>
+                <div class="tile" id="3"></div>
+                <div class="tile" id="4"></div>
+                <div class="tile" id="5"></div>
+                <div class="tile" id="6"></div>
+                <div class="tile" id="7"></div>
+                <div class="tile" id="8"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close"></span>
+            <p class="result"></p>
+        </div>
+    </div>
+    <div class="modal-wrapper">
+        <div class="modal" id="optionsForm">
+            
+        </div>
     </div>
 </body>
+
+
 <script src="script.js"></script>
 </html>
