@@ -13,6 +13,8 @@ body{
     display:flex;
     justify-content:center;
     width:100%;
+
+    margin-top:5vw;
 }
 
 #gameBoard{
@@ -29,6 +31,10 @@ body{
     cursor:pointer;
 }
 
+
+.homeBtn{
+    margin:16px;
+}
 
 .tile{
     background-color: white;
