@@ -8,6 +8,7 @@ const radioaiEasy = document.getElementById('aiEasy');
 const radioaiHard = document.getElementById('aiHard');
 const submitButton = document.getElementById('submit');
 const cancelButton = document.getElementById('cancel');
+const optionsBoxDiv = document.getElementById(`optionsBox`);
 
 const tile0 = document.getElementById('0');
 const tile1 = document.getElementById('1');
@@ -18,3 +19,23 @@ const tile5 = document.getElementById('5');
 const tile6 = document.getElementById('6');
 const tile7 = document.getElementById('7');
 const tile8 = document.getElementById('8');
+
+function toggleOptions(){
+    if (optionsBoxDiv.style.display ==="none"){
+        optionsBoxDiv.style.display = "block";
+    } else {
+        optionsBoxDiv.style.display = "none";
+    }
+}
+
+optionsButton.addEventListener('click', function(){
+    toggleOptions();
+});
+
+cancelButton.addEventListener('click', function(){
+    toggleOptions();
+});
+
+submitButton.addEventListener('click', function(){
+    toggleOptions();
+});

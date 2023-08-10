@@ -7,8 +7,6 @@ body{
     position:relative;
 }
 
-
-
 /* below codeblock may not be needed? */
 #gameContainer{
     display:flex;
@@ -96,3 +94,4 @@ form > div {
 .formBtn{
     font-size: 24px;;
 }
+
