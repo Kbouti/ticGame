@@ -4,6 +4,7 @@ body{
     display:flex;
     justify-content:center;
     text-align: center;
+    position:relative;
 }
 
 
@@ -56,10 +57,14 @@ body{
 #optionsBox{
     border: solid black 2px;
     border-radius:5px;
-    height:30vh;
-    width:30vw;
+    height:40vh;
+    width:50vw;
     min-width:300px;
     min-height:250px;
+    background-color: white;
+    position:absolute;
+    top:65px;
+    display:block;
 }
 
 form{
