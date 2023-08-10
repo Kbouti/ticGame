@@ -1,3 +1,8 @@
+
+const player1NameDiv = document.getElementById(`name1`);
+const player2NameDiv = document.getElementById(`name2`);
+
+
 const restartButton = document.getElementById(`restart`);
 const optionsButton = document.getElementById(`options`);
 const optionsForm = document.getElementById(`optionsForm`);
@@ -46,6 +51,11 @@ player1Input.value = '';
 player2Input.value = '';
 }
 
+function setNames(){
+    player1NameDiv.innerHTML = `X   ${player1Name}`;
+    player2NameDiv.innerHTML = `O   ${player2Name}`;
+}
+
 function getGameMode(){
     if (radio1v1.checked){
         console.log(`game on`);
@@ -68,6 +78,7 @@ cancelButton.addEventListener('click', function(){
 optionsForm.addEventListener(`submit`, function(){
     event.preventDefault();
     getNames();
+    setNames();
     getGameMode();
     toggleOptions();
 
