@@ -52,8 +52,8 @@ player2Input.value = '';
 }
 
 function setNames(){
-    player1NameDiv.innerHTML = `X   ${player1Name}`;
-    player2NameDiv.innerHTML = `O   ${player2Name}`;
+    player1NameDiv.innerHTML = player1Name;
+    player2NameDiv.innerHTML = player2Name;
 }
 
 function getGameMode(){

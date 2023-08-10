@@ -21,9 +21,13 @@ body{
     font-size:36px;
 }
 
-#nameBoard > div{
-    margin:36px;
+#nameBoard, #XOBoard{
+    display:flex;
+    width:100vw;
+    justify-content:space-around;
+    font-size:36px;
 }
+
 
 #gameBoard{
     display:grid;
