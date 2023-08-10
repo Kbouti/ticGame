@@ -29,15 +29,41 @@
             </div>
         </div>
     </div>
-    
-    <div class="modal-wrapper">
-        <div class="modal" id="formContainer">
-            <div class="front-content">
-                form#
-            </div>
 
+    
+        <div id="optionsBox">
+            <div id="formContainer">
+                <form autocomplete="off" id="optionsForm">
+                    <div class="inputField">
+                        <label for="player1" class="inputLabel">(X) Player 1's name:</label>
+                        <input type="text" id="player1">
+                    </div>
+                    <div class="inputField">
+                        <label for="player2" class="inputLabel">(O) Player 2's name:</label>
+                        <input type="text" id="player2">
+                    </div>
+                    <div class="inputField">
+                        <label for="1v1" class="radioTitle">Human vs Human:</label>
+                        <input type="radio" id="1v1" name="choice" value="0" required>
+                    </div>
+                    <div class="inputField">
+                        <label for="aiEasy" class="radioTitle">Human vs TicTacToe bot:</label>
+                        <input type="radio" id="aiEasy" name="choice" value="1" required>
+                    </div>
+                    <div class="inputField">
+                        <label for="aiHard" class="radioTitle">Human vs THE DESTROYER</label>
+                        <input type="radio" id="aiHard" name="choice" value="2" required>
+                    </div>
+                    <div>
+                        <button class="formBtn" type="submit" id="submit">Start Game</button>
+                        <button class="formBtn"  id="cancel">Cancel</button>
+                    </div>
+
+
+                </form>
+            </div>
         </div>
-    </div>
+    
 </body>
 
 
