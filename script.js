@@ -2,7 +2,7 @@ const restartButton = document.getElementById(`restart`);
 const optionsButton = document.getElementById(`options`);
 const optionsForm = document.getElementById(`optionsForm`);
 const player1Input = document.getElementById(`player1`);
-const player2Input = document.getElementById(`player`);
+const player2Input = document.getElementById(`player2`);
 const radio1v1 = document.getElementById('1v1');
 const radioaiEasy = document.getElementById('aiEasy');
 const radioaiHard = document.getElementById('aiHard');
@@ -27,6 +27,7 @@ let player2;
 
 let player1Name;
 let player2Name;
+let gameMode
 
 
 
@@ -46,11 +47,13 @@ player2Input.value = '';
 }
 
 function getGameMode(){
-
+    if (radio1v1.checked){
+        console.log(`game on`);
+    }
 }
 
 function startGame(){
-    
+
 }
 
 optionsButton.addEventListener('click', function(){
@@ -61,8 +64,12 @@ cancelButton.addEventListener('click', function(){
     toggleOptions();
 });
 
-submitButton.addEventListener('click', function(){
+
+optionsForm.addEventListener(`submit`, function(){
     event.preventDefault();
     getNames();
+    getGameMode();
     toggleOptions();
-});
+
+})
+
