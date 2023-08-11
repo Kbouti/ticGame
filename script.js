@@ -71,6 +71,11 @@ const playMove = (tile, data) =>{
     }
     data.board[tile.id] = data.currentPlayer;
     tile.textContent = data.currentPlayer;
+    if (data.currentPlayer == 'X'){
+        data.currentPlayer = 'O';
+    } else {
+        data.currentPlayer = 'X';
+    }
 
     console.log(tile, data);
 }
