@@ -51,4 +51,23 @@ const initializeVariables = (data) => {
 
 const initializeGame = (data) =>{
     initializeVariables(data);
+
+    addEventListenersToTiles();
+}
+
+const addEventListenersToTiles = (data) =>{
+    document.querySelectorAll(`.tile`).forEach(tile =>{
+        tile.addEventListener(`click`, (event) =>{
+            playMove(event.target,data)
+        })
+    })
+}
+
+const playMove = (tile,data) =>{
+    console.log(tile,data)
+    if(data.gameOver == true){
+        return
+    }
+
+    
 }
