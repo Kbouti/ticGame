@@ -1,6 +1,6 @@
 const form = document.querySelector(`#optionsForm`);
 const cancelBtnDiv = document.querySelector(`#cancel`);
-const optionsBtnDiv = document.querySelector(`#options`)
+const optionsBtnDiv = document.querySelector(`#options`);
 
 const toggleOptions = () =>{
     let optionsBoxDiv = document.querySelector(`#optionsBox`);
@@ -46,28 +46,26 @@ const initializeVariables = (data) => {
     data.player2 = "O";
     data.round = 0;
     data.currentPlayer = "X";
-    data.gameOver = false
+    data.gameOver = false;
 ;}
 
 const initializeGame = (data) =>{
     initializeVariables(data);
-
-    addEventListenersToTiles();
+    addEventListenersToTiles(data);
 }
 
 const addEventListenersToTiles = (data) =>{
     document.querySelectorAll(`.tile`).forEach(tile =>{
         tile.addEventListener(`click`, (event) =>{
-            playMove(event.target,data)
+            playMove(event.target, data);
         })
     })
 }
 
-const playMove = (tile,data) =>{
-    console.log(tile,data)
-    if(data.gameOver == true){
+const playMove = (tile, data) =>{
+    console.log(tile,data);
+    if(data.gameOver){
         return
     }
 
-    
 }
