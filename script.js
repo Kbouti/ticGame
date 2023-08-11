@@ -63,9 +63,14 @@ const addEventListenersToTiles = (data) =>{
 }
 
 const playMove = (tile, data) =>{
-    console.log(tile,data);
     if(data.gameOver){
-        return
+        return;
     }
+    if((data.board[tile.id] === 'X') || (data.board[tile.id] === 'O')){
+        return;
+    }
+    data.board[tile.id] = data.currentPlayer;
+    tile.textContent = data.currentPlayer;
 
+    console.log(tile, data);
 }
