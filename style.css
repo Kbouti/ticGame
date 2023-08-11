@@ -37,10 +37,11 @@ body{
     width:25vw;
     min-width:170px;
     min-height:170px;
-
     grid-gap:2px;
     background-color: #1F5573;
     cursor:pointer;
+
+    
 }
 
 
@@ -56,9 +57,9 @@ body{
     min-height:50px;
     font-size: max(4vw, 3rem);
     display:flex;
+    justify-content:center;
     align-items:center;
-    text-align:center;
-    
+    padding-top: .5rem;;
 }
 
 .tile:hover{
