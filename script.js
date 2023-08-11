@@ -32,9 +32,22 @@ let player2;
 
 let player1Name;
 let player2Name;
-let gameMode
+let gameMode;
+let turn;
+let gameStatus = "off";
 
 
+function startGame(){
+    gameStatus = "on";
+}
+
+function activateTile(){
+
+}
+
+function scanBoard(){
+    
+}
 
 function toggleOptions(){
     if (optionsBoxDiv.style.display ==="none"){
@@ -76,9 +89,7 @@ function getGameMode(){
     return gameMode;
 }
 
-function startGame(){
 
-}
 
 optionsButton.addEventListener('click', function(){
     toggleOptions();
