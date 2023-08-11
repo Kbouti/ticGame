@@ -2,6 +2,17 @@ const form = document.querySelector(`#optionsForm`);
 const cancelBtnDiv = document.querySelector(`#cancel`);
 const optionsBtnDiv = document.querySelector(`#options`);
 
+const winningConditions =[
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [2,4,6],
+]
+
 const toggleOptions = () =>{
     let optionsBoxDiv = document.querySelector(`#optionsBox`);
     if (optionsBoxDiv.style.display ==="none"){
@@ -71,11 +82,37 @@ const playMove = (tile, data) =>{
     }
     data.board[tile.id] = data.currentPlayer;
     tile.textContent = data.currentPlayer;
+    console.log(data.round)
+    data.round++;
+    console.log(data.round)
     if (data.currentPlayer == 'X'){
+        tile.classList.add(`playerOne`);
         data.currentPlayer = 'O';
     } else {
+        tile.classList.add(`playerTwo`);
         data.currentPlayer = 'X';
     }
-
+    checkWinner(data);
     console.log(tile, data);
+}
+
+const endConditions = (data) =>{
+    if(checkWinner(data)){
+        return true;
+    }
+    else if (data.round === 9){
+        return true;
+    }
+    return false;
+}
+
+const checkWinner = (data) => {
+    let result = false;
+    winningConditions.forEach(condition => {
+        if((data.board[condition[0]] === data.board[condition[1]]) && (data.board[condition[1]] === data.board[condition[2]])){
+            console.log(`We got a mo'fuckin winner!!!`);
+            result = true;
+            data.gameOver=true;
+        }
+    })
 }

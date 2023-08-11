@@ -27,7 +27,13 @@ body{
     justify-content:space-around;
     font-size:36px;
 }
+.playerOne{
+color: #1F5573;
+}
 
+.playerTwo{
+color:crimson;
+}
 
 #gameBoard{
     display:grid;
