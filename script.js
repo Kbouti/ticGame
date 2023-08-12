@@ -61,7 +61,6 @@ const initializeVariables = (data) => {
     data.winner = ""
     const actionMessageDiv = document.getElementById(`actionMessage`);
     actionMessageDiv.innerText = 'Begin Round!'
-
 ;}
 
 const initializeGame = (data) =>{
@@ -76,6 +75,34 @@ const addEventListenersToTiles = (data) =>{
         })
     })
 }
+
+const resetButton = document.getElementById(`restart`);
+resetButton.addEventListener('click', (data) =>{
+    resetGame(data);
+})
+
+const resetGame = (data)=> {
+    data.board = [0,1,2,3,4,5,6,7,8];
+    data.round = 0;
+    data.currentPlayer = "X";
+    data.gameOver = false;
+    data.winner = ""
+    const actionMessageDiv = document.getElementById(`actionMessage`);
+    actionMessageDiv.innerText = 'Begin Round!'
+    resetTiles();
+    addEventListenersToTiles(data);
+}
+
+
+const resetTiles = () =>{
+    let tiles = document.querySelectorAll(`.tile`);
+    tiles.forEach(function(tile){
+        tile.innerHTML = '';
+        tile.classList.remove("playerOne", "playerTwo")
+    })
+}
+
+
 
 const playMove = (tile, data) =>{
     if(data.gameOver){
@@ -130,3 +157,4 @@ const checkWinner = (data) => {
         }
     })
 }
+
