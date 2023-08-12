@@ -58,6 +58,10 @@ const initializeVariables = (data) => {
     data.round = 0;
     data.currentPlayer = "X";
     data.gameOver = false;
+    data.winner = ""
+    const actionMessageDiv = document.getElementById(`actionMessage`);
+    actionMessageDiv.innerText = 'Begin Round!'
+
 ;}
 
 const initializeGame = (data) =>{
@@ -113,6 +117,16 @@ const checkWinner = (data) => {
             console.log(`We got a mo'fuckin winner!!!`);
             result = true;
             data.gameOver=true;
+
+            if(data.board[condition[0]] == 'X'){
+                data.winner = data.player1Name
+                console.log(`The winner is ${data.winner}`)
+            } else {
+            data.winner = data.player2Name
+            console.log(`The winner is ${data.winner}`)
+            }
+        const actionMessageDiv = document.getElementById(`actionMessage`);
+        actionMessageDiv.innerText = `${data.winner} wins!`
         }
     })
 }
