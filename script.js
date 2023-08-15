@@ -113,9 +113,7 @@ const playMove = (tile, data) =>{
     }
     data.board[tile.id] = data.currentPlayer;
     tile.textContent = data.currentPlayer;
-    console.log(data.round)
     data.round++;
-    console.log(data.round)
     if (data.currentPlayer == 'X'){
         tile.classList.add(`playerOne`);
         data.currentPlayer = 'O';
@@ -124,7 +122,6 @@ const playMove = (tile, data) =>{
         data.currentPlayer = 'X';
     }
     checkWinner(data);
-    console.log(tile, data);
 }
 
 const endConditions = (data) =>{
@@ -141,16 +138,13 @@ const checkWinner = (data) => {
     let result = false;
     winningConditions.forEach(condition => {
         if((data.board[condition[0]] === data.board[condition[1]]) && (data.board[condition[1]] === data.board[condition[2]])){
-            console.log(`We got a mo'fuckin winner!!!`);
             result = true;
             data.gameOver=true;
 
             if(data.board[condition[0]] == 'X'){
                 data.winner = data.player1Name
-                console.log(`The winner is ${data.winner}`)
             } else {
             data.winner = data.player2Name
-            console.log(`The winner is ${data.winner}`)
             }
         const actionMessageDiv = document.getElementById(`actionMessage`);
         actionMessageDiv.innerText = `${data.winner} wins!`
