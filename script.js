@@ -26,10 +26,8 @@ const populateNameTags = (data) =>{
     if (data.player2Name == ``) {data.player2Name = `Unnamed Competitor`};
     if (data.choice == 1) {data.player2Name = `TicTacToe Bot`};
     if (data.choice == 2) {data.player2Name = `THE DESTROYER`};
-    const player1Div = document.getElementById(`name1`);
-    const player2Div = document.getElementById(`name2`);
-    player1Div.innerHTML = data.player1Name;
-    player2Div.innerHTML = data.player2Name;
+    adjustDom('name1', data.player1Name)
+    adjustDom('name2', data.player2Name)
     form.reset();
 }
 
@@ -74,6 +72,11 @@ const addEventListenersToTiles = (data) =>{
             playMove(event.target, data);
         })
     })
+}
+
+const adjustDom = (elementId, text) =>{
+let element = document.querySelector(`#${elementId}`);
+element.textContent = text;
 }
 
 const playMove = (tile, data) =>{
