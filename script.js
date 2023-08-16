@@ -158,11 +158,10 @@ const adjustDom = (elementId, text) =>{
 
 const changePlayer = (data) =>{
     if (data.currentPlayer === `X`){
-
-        adjustDom(`actionMessage`, `${data.player1Name}'s turn.`);
+        adjustDom(`actionMessage`, `${data.player2Name}'s turn.`);
         data.currentPlayer = `O`
     } else {
-        adjustDom(`actionMessage`, `${data.player2Name}'s turn.`);
+        adjustDom(`actionMessage`, `${data.player1Name}'s turn.`);
         data.currentPlayer = `X`
     }
 
