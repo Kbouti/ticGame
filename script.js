@@ -98,7 +98,13 @@ const playMove = (tile, data) =>{
 
 const endConditions = (data) =>{
     if(checkWinner(data)){
-        return true;
+        let winnerName;
+        if (data.currentPlayer === 'X' ){
+            winnerName = data.player1Name;
+        }
+        else {
+            winnerName = data.player2Name;
+        }
     }
     else if (data.round === 9){
         return true;
