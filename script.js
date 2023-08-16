@@ -98,15 +98,17 @@ const playMove = (tile, data) =>{
     tile.textContent = data.currentPlayer;
     data.round++;
 
-    if (endConditions(data)){
-        return;
-    }
 
     if (data.currentPlayer == 'X'){
         tile.classList.add(`playerOne`);
     } else {
         tile.classList.add(`playerTwo`);
     }
+
+    if (endConditions(data)){
+        return;
+    }
+
     checkWinner(data);
     changePlayer(data);
 }
@@ -115,7 +117,7 @@ const playMove = (tile, data) =>{
 
 const endConditions = (data) =>{
     if(checkWinner(data)){
-        adjustDom(`actionMessage`, `${data.currentPlayer} has won the game`)
+        adjustDom(`actionMessage`, `${data.currentPlayer} has won the game`);
         if (data.currentPlayer === 'X' ){
             data.winner = `X`
             winnerName = data.player1Name;
@@ -124,9 +126,8 @@ const endConditions = (data) =>{
             winnerName = data.player2Name;
             data.winner = `O`
         }
-        console.log(winnerName);
         adjustDom('actionMessage', `${winnerName} wins!`)
-    
+        return true;
     
     }
     else if (data.round === 9){
