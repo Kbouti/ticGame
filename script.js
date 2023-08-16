@@ -76,34 +76,6 @@ const addEventListenersToTiles = (data) =>{
     })
 }
 
-const resetButton = document.getElementById(`restart`);
-resetButton.addEventListener('click', (data) =>{
-    resetGame(data);
-})
-
-const resetGame = (data)=> {
-    data.board = [0,1,2,3,4,5,6,7,8];
-    data.round = 0;
-    data.currentPlayer = "X";
-    data.gameOver = false;
-    data.winner = ""
-    const actionMessageDiv = document.getElementById(`actionMessage`);
-    actionMessageDiv.innerText = 'Begin Round!'
-    resetTiles();
-    addEventListenersToTiles(data);
-}
-
-
-const resetTiles = () =>{
-    let tiles = document.querySelectorAll(`.tile`);
-    tiles.forEach(function(tile){
-        tile.innerHTML = '';
-        tile.classList.remove("playerOne", "playerTwo")
-    })
-}
-
-
-
 const playMove = (tile, data) =>{
     if(data.gameOver){
         return;
@@ -137,18 +109,22 @@ const endConditions = (data) =>{
 const checkWinner = (data) => {
     let result = false;
     winningConditions.forEach(condition => {
-        if((data.board[condition[0]] === data.board[condition[1]]) && (data.board[condition[1]] === data.board[condition[2]])){
+        if (
+            (data.board[condition[0]] === data.board[condition[1]]) && 
+            (data.board[condition[1]] === data.board[condition[2]])
+            ){
             result = true;
             data.gameOver=true;
-
-            if(data.board[condition[0]] == 'X'){
-                data.winner = data.player1Name
-            } else {
-            data.winner = data.player2Name
-            }
-        const actionMessageDiv = document.getElementById(`actionMessage`);
-        actionMessageDiv.innerText = `${data.winner} wins!`
         }
     })
+    return result;
 }
+
+
+
+
+
+
+
+
 
