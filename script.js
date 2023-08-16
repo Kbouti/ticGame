@@ -2,6 +2,42 @@ const form = document.querySelector(`#optionsForm`);
 const cancelBtnDiv = document.querySelector(`#cancel`);
 const optionsBtnDiv = document.querySelector(`#options`);
 
+
+
+const toggleOptions = () =>{
+    let optionsBoxDiv = document.querySelector(`#optionsBox`);
+    if (optionsBoxDiv.style.display ==="none"){
+        optionsBoxDiv.style.display = "block";
+    } else {
+        optionsBoxDiv.style.display = "none";
+    }
+};
+
+cancelBtnDiv.addEventListener(`click`, (event) => {
+    toggleOptions();
+});
+
+optionsBtnDiv.addEventListener(`click`, (event) => {
+    toggleOptions();
+});
+
+
+const populateNameTags = (data) =>{
+    if (data.player2Name == ``) {data.player2Name = `Unnamed Competitor`};
+    if (data.choice == 1) {data.player2Name = `TicTacToe Bot`};
+    if (data.choice == 2) {data.player2Name = `THE DESTROYER`};
+    adjustDom('name1', data.player1Name)
+    adjustDom('name2', data.player2Name)
+    form.reset();
+}
+
+
+
+
+
+
+
+
 const winningConditions =[
     [0,1,2],
     [3,4,5],
@@ -13,23 +49,6 @@ const winningConditions =[
     [2,4,6],
 ]
 
-const toggleOptions = () =>{
-    let optionsBoxDiv = document.querySelector(`#optionsBox`);
-    if (optionsBoxDiv.style.display ==="none"){
-        optionsBoxDiv.style.display = "block";
-    } else {
-        optionsBoxDiv.style.display = "none";
-    }
-};
-
-const populateNameTags = (data) =>{
-    if (data.player2Name == ``) {data.player2Name = `Unnamed Competitor`};
-    if (data.choice == 1) {data.player2Name = `TicTacToe Bot`};
-    if (data.choice == 2) {data.player2Name = `THE DESTROYER`};
-    adjustDom('name1', data.player1Name)
-    adjustDom('name2', data.player2Name)
-    form.reset();
-}
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -40,13 +59,6 @@ form.addEventListener("submit", (event) => {
     initializeGame(data);
 });
 
-cancelBtnDiv.addEventListener(`click`, (event) => {
-    toggleOptions();
-});
-
-optionsBtnDiv.addEventListener(`click`, (event) => {
-    toggleOptions();
-});
 
 const initializeVariables = (data) => {
     data.choice = +data.choice;
@@ -74,10 +86,6 @@ const addEventListenersToTiles = (data) =>{
     })
 }
 
-const adjustDom = (elementId, text) =>{
-let element = document.querySelector(`#${elementId}`);
-element.textContent = text;
-}
 
 const playMove = (tile, data) =>{
     if(data.gameOver){
@@ -89,25 +97,37 @@ const playMove = (tile, data) =>{
     data.board[tile.id] = data.currentPlayer;
     tile.textContent = data.currentPlayer;
     data.round++;
+
+    if (endConditions(data)){
+        return;
+    }
+
     if (data.currentPlayer == 'X'){
         tile.classList.add(`playerOne`);
-        data.currentPlayer = 'O';
     } else {
         tile.classList.add(`playerTwo`);
-        data.currentPlayer = 'X';
     }
     checkWinner(data);
+    changePlayer(data);
 }
+
+
 
 const endConditions = (data) =>{
     if(checkWinner(data)){
-        let winnerName;
+        adjustDom(`actionMessage`, `${data.currentPlayer} has won the game`)
         if (data.currentPlayer === 'X' ){
+            data.winner = `X`
             winnerName = data.player1Name;
         }
         else {
             winnerName = data.player2Name;
+            data.winner = `O`
         }
+        console.log(winnerName);
+        adjustDom('actionMessage', `${winnerName} wins!`)
+    
+    
     }
     else if (data.round === 9){
         return true;
@@ -121,13 +141,29 @@ const checkWinner = (data) => {
         if (
             (data.board[condition[0]] === data.board[condition[1]]) && 
             (data.board[condition[1]] === data.board[condition[2]])
-            ){
+            ){              
             result = true;
             data.gameOver=true;
         }
-    })
+    });
     return result;
 }
+
+
+const adjustDom = (elementId, text) =>{
+    let element = document.querySelector(`#${elementId}`);
+    element.textContent = text;
+    }
+    
+
+const changePlayer = (data) =>{
+    if (data.currentPlayer === `X`){
+        data.currentPlayer = `O`
+    } else {
+        data.currentPlayer = `X`
+    }
+}
+
 
 
 
