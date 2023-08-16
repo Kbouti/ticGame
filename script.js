@@ -68,14 +68,13 @@ const initializeVariables = (data) => {
     data.round = 0;
     data.currentPlayer = "X";
     data.gameOver = false;
-    data.winner = ""
-    const actionMessageDiv = document.getElementById(`actionMessage`);
-    actionMessageDiv.innerText = 'Begin Round!'
+    data.winner = "";
 ;}
 
 const initializeGame = (data) =>{
     initializeVariables(data);
     addEventListenersToTiles(data);
+    adjustDom(`actionMessage`, `${data.player1Name} starts us off`);
 }
 
 const addEventListenersToTiles = (data) =>{
