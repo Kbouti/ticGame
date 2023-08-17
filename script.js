@@ -109,7 +109,18 @@ const playMove = (tile, data) =>{
     }
 
     checkWinner(data);
-    changePlayer(data);
+    
+    if (data.choice === 0){
+        changePlayer(data);
+    } else if (data.choice === 1){
+        //easyai
+        easyAiMove(data);
+        data.currentPlayer = 'X';
+    } else if (data.choice === 2){
+        //hardai
+    }
+    
+    
 }
 
 
@@ -164,13 +175,29 @@ const changePlayer = (data) =>{
         adjustDom(`actionMessage`, `${data.player1Name}'s turn.`);
         data.currentPlayer = `X`
     }
-
-
-
 }
 
 
+const easyAiMove = (data) => {
+    changePlayer(data);
+    setTimeout(() =>{
+        let availableSpaces = data.board.filter(
+            (space) => space !== "X" && space !== "O"
+        );
+        let move = 
+            availableSpaces[Math.floor(Math.random() * availableSpaces.length)];
+            console.log(move);
+            data.board[move] = data.player2;
+            let tile = document.getElementById(`${move}`);
+            tile.textContent = data.player2;
+            tile.classList.add('playerTwo');
+    }, 300);
 
+    if (endConditions(data)){
+        return;
+    }
+    changePlayer(data);
+}
 
 
 
