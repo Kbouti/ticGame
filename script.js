@@ -151,7 +151,6 @@ const checkWinner = (data, player) => {
             (data.board[condition[2]] === player)
             ){              
             result = true;
-            data.gameOver=true;
         }
     });
     return result;
