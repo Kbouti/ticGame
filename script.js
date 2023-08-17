@@ -111,9 +111,12 @@ const playMove = (tile, data) =>{
         easyAiMove(data);
         data.currentPlayer = 'X';
     } else if (data.choice === 2){
-        //hardai
+        changePlayer(data);
         hardAiMove(data);
-        data.currentPlayer = 'X';
+        if(endConditions(data)){
+            return;
+        };
+        changePlayer(data);
     } 
 }
 
@@ -141,7 +144,7 @@ const endConditions = (data) =>{
 
 const checkWinner = (data, player) => {
     let result = false;
-    winningConditions.forEach(condition => {
+    winningConditions.forEach((condition) => {
         if (
             (data.board[condition[0]] === player) &&
             (data.board[condition[1]] === player) && 
@@ -195,7 +198,13 @@ const easyAiMove = (data) => {
 
 const hardAiMove = (data) =>{
     data.round++;
-    minimax(data, "O")
+    const move = minimax(data, "O").index;
+    data.board[move] = data.player2;
+    let box = document.getElementById(`${move}`);
+    box.textContent = data.player2;
+    box.classList.add("playerTwo");
+
+    console.log(data);
 }
 
 
@@ -204,25 +213,31 @@ const minimax = (data, player) =>{
     let availableSpaces = data.board.filter(
         (space) => space !== "X" && space !== "O"
     );
-    if(checkWinner(data, data.player2)){
-        move.score = -100;
-    } else if (checkWinner(data,data.player1)){
-        move.score = 100;
+    if(checkWinner(data, data.player1)){
+        return {
+            score: -100,
+        };
+    } else if (checkWinner(data, data.player2)){
+        return {
+            score: 100,
+        };
     } else if (availableSpaces.length === 0){
-        move.score = 0;
+        return {
+            score: 0,
+        };
     }
     const potentialMoves = [];
     for (let i = 0; i < availableSpaces.length; i++){
         let move = {}
-        move.index = data.board[availableSpaces[i]]
+        move.index = data.board[availableSpaces[i]];
+        data.board[availableSpaces[i]] = player;
         if (player === data.player2){
-            move.score = minimax(data, "X").score
+            move.score = minimax(data, data.player1).score;
         } else {
-            move.score = minimax(data,"O").score
+            move.score = minimax(data, data.player2).score;
         }
-
         data.board[availableSpaces[i]] = move.index;
-        potentialMoves.push(move)
+        potentialMoves.push(move);
     }
     let bestMove = 0;
     if(player ===data.player2){
@@ -233,6 +248,15 @@ const minimax = (data, player) =>{
                 bestMove = i;
             }
         }
+    } else {
+        let bestScore = 10000;
+        for(let i = 0; i < potentialMoves.length; i++){
+            if(potentialMoves[i].score < bestScore){
+                bestScore = potentialMoves[i].score;
+                bestMove = i;
+            }
+        }
     }
-}
+    return potentialMoves[bestMove];
+};
 
