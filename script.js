@@ -96,37 +96,31 @@ const playMove = (tile, data) =>{
     data.board[tile.id] = data.currentPlayer;
     tile.textContent = data.currentPlayer;
     data.round++;
-
-
     if (data.currentPlayer == 'X'){
         tile.classList.add(`playerOne`);
     } else {
         tile.classList.add(`playerTwo`);
     }
-
     if (endConditions(data)){
         return;
     }
-
     checkWinner(data);
-    
     if (data.choice === 0){
         changePlayer(data);
     } else if (data.choice === 1){
-        //easyai
         easyAiMove(data);
         data.currentPlayer = 'X';
     } else if (data.choice === 2){
         //hardai
-    }
-    
-    
+        hardAiMove(data);
+        data.currentPlayer = 'X';
+    } 
 }
 
 
 
 const endConditions = (data) =>{
-    if(checkWinner(data)){
+    if(checkWinner(data, data.currentPlayer)){
         adjustDom(`actionMessage`, `${data.currentPlayer} has won the game`);
         if (data.currentPlayer === 'X' ){
             data.winner = `X`
@@ -138,7 +132,6 @@ const endConditions = (data) =>{
         }
         adjustDom('actionMessage', `${winnerName} wins!`)
         return true;
-    
     }
     else if (data.round === 9){
         return true;
@@ -146,12 +139,13 @@ const endConditions = (data) =>{
     return false;
 }
 
-const checkWinner = (data) => {
+const checkWinner = (data, player) => {
     let result = false;
     winningConditions.forEach(condition => {
         if (
-            (data.board[condition[0]] === data.board[condition[1]]) && 
-            (data.board[condition[1]] === data.board[condition[2]])
+            (data.board[condition[0]] === player) &&
+            (data.board[condition[1]] === player) && 
+            (data.board[condition[2]] === player)
             ){              
             result = true;
             data.gameOver=true;
@@ -164,7 +158,7 @@ const checkWinner = (data) => {
 const adjustDom = (elementId, text) =>{
     let element = document.querySelector(`#${elementId}`);
     element.textContent = text;
-    }
+}
     
 
 const changePlayer = (data) =>{
@@ -180,7 +174,6 @@ const changePlayer = (data) =>{
 
 const easyAiMove = (data) => {
     changePlayer(data);
-
     data.round++;
         let availableSpaces = data.board.filter(
             (space) => space !== "X" && space !== "O"
@@ -200,8 +193,46 @@ const easyAiMove = (data) => {
 }
 
 
+const hardAiMove = (data) =>{
+    data.round++;
+    minimax(data, "O")
+}
 
 
 
+const minimax = (data, player) =>{
+    let availableSpaces = data.board.filter(
+        (space) => space !== "X" && space !== "O"
+    );
+    if(checkWinner(data, data.player2)){
+        move.score = -100;
+    } else if (checkWinner(data,data.player1)){
+        move.score = 100;
+    } else if (availableSpaces.length === 0){
+        move.score = 0;
+    }
+    const potentialMoves = [];
+    for (let i = 0; i < availableSpaces.length; i++){
+        let move = {}
+        move.index = data.board[availableSpaces[i]]
+        if (player === data.player2){
+            move.score = minimax(data, "X").score
+        } else {
+            move.score = minimax(data,"O").score
+        }
 
+        data.board[availableSpaces[i]] = move.index;
+        potentialMoves.push(move)
+    }
+    let bestMove = 0;
+    if(player ===data.player2){
+        let bestScore = -10000;
+        for(let i = 0; i < potentialMoves.length; i++){
+            if(potentialMoves[i].score > bestScore){
+                bestScore = potentialMoves[i].score;
+                bestMove = i;
+            }
+        }
+    }
+}
 
