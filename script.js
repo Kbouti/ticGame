@@ -180,19 +180,19 @@ const changePlayer = (data) =>{
 
 const easyAiMove = (data) => {
     changePlayer(data);
-    setTimeout(() =>{
+
+    data.round++;
         let availableSpaces = data.board.filter(
             (space) => space !== "X" && space !== "O"
         );
         let move = 
             availableSpaces[Math.floor(Math.random() * availableSpaces.length)];
-            console.log(move);
-            data.board[move] = data.player2;
+        data.board[move] = data.player2;
+        setTimeout(() =>{
             let tile = document.getElementById(`${move}`);
             tile.textContent = data.player2;
             tile.classList.add('playerTwo');
     }, 300);
-
     if (endConditions(data)){
         return;
     }
