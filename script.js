@@ -1,6 +1,5 @@
 const form = document.querySelector(`#optionsForm`);
-const cancelBtnDiv = document.querySelector(`#cancel`);
-const optionsBtnDiv = document.querySelector(`#options`);
+const menuBtnDiv = document.querySelector(`#menu`);
 const restartBtnDiv = document.querySelector(`#restart`);
 
 
@@ -13,12 +12,9 @@ const toggleOptions = () =>{
     }
 };
 
-cancelBtnDiv.addEventListener(`click`, (event) => {
-    toggleOptions();
-});
 
-optionsBtnDiv.addEventListener(`click`, (event) => {
-    toggleOptions();
+menuBtnDiv.addEventListener(`click`, () => {
+    window.location.reload();
 });
 
 
@@ -30,11 +26,6 @@ const populateNameTags = (data) =>{
     adjustDom('name2', data.player2Name)
     form.reset();
 }
-
-
-
-
-
 
 
 const winningConditions =[
@@ -279,6 +270,5 @@ const minimax = (data, player) =>{
     }
     return potentialMoves[bestMove];
 };
-
 
 
