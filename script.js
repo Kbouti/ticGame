@@ -188,7 +188,7 @@ const easyAiMove = (data) => {
             let tile = document.getElementById(`${move}`);
             tile.textContent = data.player2;
             tile.classList.add('playerTwo');
-        }, 300);
+        }, 325);
     if (endConditions(data)){
         return;
     }
@@ -204,7 +204,7 @@ const hardAiMove = (data) =>{
     let tile = document.getElementById(`${move}`);
     tile.textContent = data.player2;
     tile.classList.add("playerTwo");
-    }, 200);
+    }, 150);
 }
 
 
@@ -259,4 +259,6 @@ const minimax = (data, player) =>{
     }
     return potentialMoves[bestMove];
 };
+
+
 
