@@ -50,7 +50,6 @@ const winningConditions =[
 
 
 form.addEventListener("submit", (event) => {
-    resetDom();
     event.preventDefault();
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
@@ -72,15 +71,18 @@ const initializeVariables = (data) => {
 ;}
 
 const initializeGame = (data) =>{
+    resetDom();
     initializeVariables(data);
     addEventListenersToTiles(data);
     adjustDom(`actionMessage`, `${data.player1Name} starts us off`);
 }
 
+
 const resetDom = () =>{
     for(let i=0;i < 9; i++){
         let element = document.getElementById(`${i}`);
-        element.classList.remove(`playerOne`, `playerTwo`);
+        element.classList.remove(`playerOne`);
+        element.classList.remove(`playerTwo`);
         element.innerHTML = '';
     }
 }
@@ -107,6 +109,10 @@ const playMove = (tile, data) =>{
     if((data.board[tile.id] === 'X') || (data.board[tile.id] === 'O')){
         return;
     }
+
+    tile.classList.remove(`playerOne`);
+    tile.classList.remove(`playerTwo`);
+
     data.board[tile.id] = data.currentPlayer;
     tile.textContent = data.currentPlayer;
     data.round++;
