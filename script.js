@@ -104,7 +104,6 @@ const playMove = (tile, data) =>{
     if (endConditions(data)){
         return;
     }
-    // checkWinner(data);
     if (data.choice === 0){
         changePlayer(data);
     } else if (data.choice === 1){
@@ -189,7 +188,7 @@ const easyAiMove = (data) => {
             let tile = document.getElementById(`${move}`);
             tile.textContent = data.player2;
             tile.classList.add('playerTwo');
-    }, 300);
+        }, 300);
     if (endConditions(data)){
         return;
     }
@@ -201,11 +200,11 @@ const hardAiMove = (data) =>{
     data.round++;
     const move = minimax(data, "O").index;
     data.board[move] = data.player2;
-    let box = document.getElementById(`${move}`);
-    box.textContent = data.player2;
-    box.classList.add("playerTwo");
-
-    console.log(data);
+    setTimeout(() =>{
+    let tile = document.getElementById(`${move}`);
+    tile.textContent = data.player2;
+    tile.classList.add("playerTwo");
+    }, 200);
 }
 
 
