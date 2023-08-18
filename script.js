@@ -136,7 +136,7 @@ const endConditions = (data) =>{
         return true;
     }
     else if (data.round === 9){
-        adjustDom("displayTurn", "It's a Tie!");
+        adjustDom("actionMessage", "It's a Tie.");
         data.gameOver = true;
         return true;
     }
