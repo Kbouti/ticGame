@@ -1,7 +1,7 @@
 const form = document.querySelector(`#optionsForm`);
 const cancelBtnDiv = document.querySelector(`#cancel`);
 const optionsBtnDiv = document.querySelector(`#options`);
-
+const restartBtnDiv = document.querySelector(`#restart`);
 
 
 const toggleOptions = () =>{
@@ -30,7 +30,6 @@ const populateNameTags = (data) =>{
     adjustDom('name2', data.player2Name)
     form.reset();
 }
-
 
 
 
@@ -77,11 +76,25 @@ const initializeGame = (data) =>{
     adjustDom(`actionMessage`, `${data.player1Name} starts us off`);
 }
 
+const resetDom = () =>{
+    for(let i=0;i < 9; i++){
+        let element = document.getElementById(`${i}`);
+        element.classList.remove(`playerOne`, `playerTwo`);
+        element.innerHTML = '';
+    }
+}
+
 const addEventListenersToTiles = (data) =>{
     document.querySelectorAll(`.tile`).forEach(tile =>{
         tile.addEventListener(`click`, (event) =>{
             playMove(event.target, data);
         })
+    })
+
+    restartBtnDiv.addEventListener(`click`, ()=>{
+        initializeVariables(data);
+        resetDom();
+        adjustDom(`actionMessage`, `${data.player1Name} starts us off`);
     })
 }
 
