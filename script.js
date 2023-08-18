@@ -50,6 +50,7 @@ const winningConditions =[
 
 
 form.addEventListener("submit", (event) => {
+    resetDom();
     event.preventDefault();
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
