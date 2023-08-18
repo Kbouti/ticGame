@@ -104,7 +104,7 @@ const playMove = (tile, data) =>{
     if (endConditions(data)){
         return;
     }
-    checkWinner(data);
+    // checkWinner(data);
     if (data.choice === 0){
         changePlayer(data);
     } else if (data.choice === 1){
@@ -124,7 +124,6 @@ const playMove = (tile, data) =>{
 
 const endConditions = (data) =>{
     if(checkWinner(data, data.currentPlayer)){
-        adjustDom(`actionMessage`, `${data.currentPlayer} has won the game`);
         if (data.currentPlayer === 'X' ){
             data.winner = `X`
             winnerName = data.player1Name;
@@ -133,10 +132,13 @@ const endConditions = (data) =>{
             winnerName = data.player2Name;
             data.winner = `O`
         }
+        data.gameOver = true;
         adjustDom('actionMessage', `${winnerName} wins!`)
         return true;
     }
     else if (data.round === 9){
+        adjustDom("displayTurn", "It's a Tie!");
+        data.gameOver = true;
         return true;
     }
     return false;
