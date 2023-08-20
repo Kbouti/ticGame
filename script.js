@@ -5,10 +5,14 @@ const restartBtnDiv = document.querySelector(`#restart`);
 
 const toggleOptions = () =>{
     let optionsBoxDiv = document.querySelector(`#optionsBox`);
+    let gameBoardDiv = document.getElementById(`gameBoard`);
+
     if (optionsBoxDiv.style.display ==="none"){
         optionsBoxDiv.style.display = "block";
+        gameBoardDiv.style.display = "none";
     } else {
         optionsBoxDiv.style.display = "none";
+        gameBoardDiv.style.display = "grid";
     }
 };
 

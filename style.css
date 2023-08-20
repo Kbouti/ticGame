@@ -36,7 +36,7 @@ color:crimson;
 }
 
 #gameBoard{
-    display:grid;
+    display:none;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
     height:25vw;
